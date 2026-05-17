@@ -18,9 +18,12 @@
 	const rawTelemetry = writable(
 		JSON.stringify(
 			{
-				modelName: 'Forklift-01',
-				position: { x: 1.2, y: 0, z: 4.5 },
-				dimensions: { width: 1.8, height: 2.4, depth: 4.1 },
+				modelName: 'ASRS carriage',
+				position: { x: -10.3, y: 1.05, z: 0 },
+				dimensions: { width: 1.7, height: 0.56, depth: 0.56 },
+				partOf: 'ASRS-01',
+				component: 'carriage',
+				rotationY: 0,
 				timestamp: new Date().toISOString()
 			},
 			null,

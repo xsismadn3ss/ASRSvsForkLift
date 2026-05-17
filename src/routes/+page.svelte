@@ -1,7 +1,11 @@
 <script lang="ts">
 	import ModelDashboard from '$lib/presentation/model-dashboard/ModelDashboard.svelte';
 
-	function openScene(): void {
+	function openAsrsScene(): void {
+		window.location.assign('/asrs');
+	}
+
+	function openForkliftScene(): void {
 		window.location.assign('/forklift');
 	}
 </script>
@@ -10,7 +14,7 @@
 	<title>Telemetría 3D</title>
 	<meta
 		name="description"
-		content="Panel de contexto 3D con telemetría por websocket para los modelos de la simulación Forklift."
+		content="Panel de contexto 3D con telemetría por websocket para las simulaciones ASRS y Forklift."
 	/>
 </svelte:head>
 
@@ -31,13 +35,22 @@
 			</p>
 		</div>
 
-		<button
-			type="button"
-			onclick={openScene}
-			class="inline-flex items-center justify-center rounded-full bg-linear-to-r from-blue-600 to-violet-600 px-4 py-3 text-sm font-medium text-white shadow-lg shadow-violet-950/30 transition hover:brightness-110 focus:ring-2 focus:ring-violet-400 focus:ring-offset-2 focus:ring-offset-slate-950 focus:outline-none"
-		>
-			Abrir escena Forklift
-		</button>
+		<div class="flex flex-wrap gap-3">
+			<button
+				type="button"
+				onclick={openAsrsScene}
+				class="inline-flex items-center justify-center rounded-full bg-linear-to-r from-blue-600 to-violet-600 px-4 py-3 text-sm font-medium text-white shadow-lg shadow-violet-950/30 transition hover:brightness-110 focus:ring-2 focus:ring-violet-400 focus:ring-offset-2 focus:ring-offset-slate-950 focus:outline-none"
+			>
+				Abrir escena ASRS
+			</button>
+			<button
+				type="button"
+				onclick={openForkliftScene}
+				class="inline-flex items-center justify-center rounded-full border border-slate-500/25 bg-slate-800/80 px-4 py-3 text-sm font-medium text-slate-100 transition hover:border-sky-400/60"
+			>
+				Abrir escena Forklift
+			</button>
+		</div>
 	</header>
 
 	<div class="px-0 pb-8">
