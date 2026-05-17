@@ -8,6 +8,10 @@
 	function openForkliftScene(): void {
 		window.location.assign('/forklift');
 	}
+
+	function openMetrics(): void {
+		window.location.assign('/metrics');
+	}
 </script>
 
 <svelte:head>
@@ -36,6 +40,13 @@
 		</div>
 
 		<div class="flex flex-wrap gap-3">
+			<button
+				type="button"
+				onclick={openMetrics}
+				class="inline-flex items-center justify-center rounded-full border border-slate-500/25 bg-slate-800/80 px-4 py-3 text-sm font-medium text-slate-100 transition hover:border-sky-400/60"
+			>
+				Ver gráficas
+			</button>
 			<button
 				type="button"
 				onclick={openAsrsScene}

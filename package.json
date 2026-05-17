@@ -30,6 +30,7 @@
 		"prettier": "^3.8.1",
 		"prettier-plugin-svelte": "^3.5.1",
 		"prettier-plugin-tailwindcss": "^0.7.2",
+		"prisma": "^6.16.0",
 		"svelte": "^5.55.2",
 		"svelte-check": "^4.4.6",
 		"tailwindcss": "^4.2.2",
@@ -38,7 +39,15 @@
 		"vite": "^8.0.7"
 	},
 	"dependencies": {
+		"@prisma/client": "^6.16.0",
 		"babylonjs": "^9.7.0",
 		"ws": "^8.20.1"
+	},
+	"pnpm": {
+		"onlyBuiltDependencies": [
+			"@prisma/client",
+			"@prisma/engines",
+			"prisma"
+		]
 	}
 }

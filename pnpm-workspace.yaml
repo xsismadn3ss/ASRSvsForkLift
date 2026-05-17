@@ -1,4 +1,9 @@
 allowBuilds:
-  '@tailwindcss/oxide': true
-  babylonjs: true
-  esbuild: true
+  '@prisma/engines': set this to true or false
+  '@tailwindcss/oxide': set this to true or false
+  babylonjs: set this to true or false
+  prisma: set this to true or false
+onlyBuiltDependencies:
+  - '@prisma/client'
+  - '@prisma/engines'
+  - prisma

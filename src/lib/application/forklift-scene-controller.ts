@@ -3,13 +3,16 @@ import {
 	createForkliftSimulation,
 	type ForkliftSimulationSnapshot
 } from '$lib/domain/forklift-simulation';
+import { createSimulationRunTracker } from './simulation-run-tracker';
 
 export class ForkliftSceneController {
 	private readonly simulation = createForkliftSimulation();
+	private readonly runTracker = createSimulationRunTracker('forklift');
 	private lastPhase: ForkliftSimulationSnapshot['phase'];
 	private elapsedSincePublish = 0;
 
 	constructor() {
+		this.runTracker.beginRun();
 		this.lastPhase = this.simulation.getSnapshot().phase;
 		this.publishTelemetry(true);
 	}
@@ -25,6 +28,8 @@ export class ForkliftSceneController {
 			this.publishTelemetry();
 		}
 
+		this.runTracker.maybeRecordCompletion(snapshot);
+
 		if (phaseChanged) {
 			this.lastPhase = snapshot.phase;
 		}
@@ -32,6 +37,7 @@ export class ForkliftSceneController {
 
 	reset(): void {
 		this.simulation.reset();
+		this.runTracker.beginRun();
 		this.lastPhase = this.simulation.getSnapshot().phase;
 		this.publishTelemetry(true);
 	}

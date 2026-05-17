@@ -3,13 +3,16 @@ import {
 	createAsrsSimulation,
 	type AsrsSimulationSnapshot
 } from '$lib/domain/asrs-simulation';
+import { createSimulationRunTracker } from './simulation-run-tracker';
 
 export class AsrsSceneController {
 	private readonly simulation = createAsrsSimulation();
+	private readonly runTracker = createSimulationRunTracker('asrs');
 	private lastPhase: AsrsSimulationSnapshot['phase'];
 	private elapsedSincePublish = 0;
 
 	constructor() {
+		this.runTracker.beginRun();
 		this.lastPhase = this.simulation.getSnapshot().phase;
 		this.publishTelemetry(true);
 	}
@@ -25,6 +28,8 @@ export class AsrsSceneController {
 			this.publishTelemetry();
 		}
 
+		this.runTracker.maybeRecordCompletion(snapshot);
+
 		if (phaseChanged) {
 			this.lastPhase = snapshot.phase;
 		}
@@ -32,6 +37,7 @@ export class AsrsSceneController {
 
 	reset(): void {
 		this.simulation.reset();
+		this.runTracker.beginRun();
 		this.lastPhase = this.simulation.getSnapshot().phase;
 		this.publishTelemetry(true);
 	}
