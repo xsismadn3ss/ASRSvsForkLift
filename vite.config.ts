@@ -2,4 +2,6 @@ import tailwindcss from '@tailwindcss/vite';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 
-export default defineConfig({ plugins: [tailwindcss(), sveltekit()] });
+import { telemetryWebSocketPlugin } from './src/lib/server/telemetry-websocket-server';
+
+export default defineConfig({ plugins: [tailwindcss(), telemetryWebSocketPlugin(), sveltekit()] });
