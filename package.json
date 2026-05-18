@@ -40,6 +40,7 @@
 	},
 	"dependencies": {
 		"@prisma/client": "^7.8.0",
+		"@prisma/client-runtime-utils": "^7.8.0",
 		"@prisma/adapter-better-sqlite3": "^7.8.0",
 		"babylonjs": "^9.7.0",
 		"better-sqlite3": "^12.10.0",
